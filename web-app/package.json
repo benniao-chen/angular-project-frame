@@ -4,11 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
+    "dev": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve",
+    "dev:aot": "./node_modules/.bin/ngc -w -p tsconfig-aot.json",
+    "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build",
+    "build:prod": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod",
+    "build:dev:aot": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --env=dev",
+    "start": "ng serve --sourcemap=false --live-reload false",
+    "server": "node ./server.js",
+    "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "e2e": "protractor"
   },
   "private": true,
   "dependencies": {
