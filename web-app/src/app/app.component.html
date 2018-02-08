@@ -1,4 +1,9 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<input currencyMask [(ngModel)]="currency" (keyup) = "showValue(currency)"/>
+<div>{{currency}}</div>
 
-<input [(ngModel)]="title" selfModelValue/>
-<div>{{title}}</div>
+
+<!-- <div #first>show this</div>
+<div *ngIf="showSecond; else first">show second</div> -->
+
+<input selfModelValue [(ngModel)]="test" (keyup) = "showValue(test)"/>
+<div>{{test}}</div>

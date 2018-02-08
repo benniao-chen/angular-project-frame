@@ -6,9 +6,20 @@ import { Http, HttpModule } from "@angular/http";
 /* END */
 
 /* Directive */
-import { SelfModelValueDirective } from "./directives/selfModelValue.directive";
+import { SelfModelValueDirective } from "./directives/self-model-value.directive";
 /* END */
-
+import { CurrencyMaskModule } from "./directives/ng2-currency-mask-master/currency-mask.module";
+import { CurrencyMaskConfig, CURRENCY_MASK_CONFIG } from "./directives/ng2-currency-mask-master/currency-mask.config";
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+    align: "right",
+    allowNegative: true,
+    allowZero: true,
+    decimal: ".",
+    precision: 0,
+    prefix: "",
+    suffix: "",
+    thousands: ","
+};
 
 @NgModule({
     imports: [
@@ -18,6 +29,7 @@ import { SelfModelValueDirective } from "./directives/selfModelValue.directive";
         ReactiveFormsModule,
         HttpModule,
         /* END */
+        CurrencyMaskModule,
     ],
     declarations: [
         /* components */
@@ -34,15 +46,15 @@ import { SelfModelValueDirective } from "./directives/selfModelValue.directive";
         ReactiveFormsModule,
         HttpModule,
         /* END */
+        CurrencyMaskModule,
         /* components */
 
         /* directive */
         SelfModelValueDirective,
-
         /* pipe */
     ],
     providers: [
-
+        {provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig}
     ]
 })
 

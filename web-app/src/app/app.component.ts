@@ -7,11 +7,18 @@ import { TranslateService} from 'ng2-translate';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string = "myApp";
+  currency: string = "1111";
+  test: string = "1234";
+
+  showSecond: boolean = false;
 
   constructor(
     private translateService: TranslateService
   ) {
     
+  }
+
+  showValue(value) {
+    console.log(value);
   }
 }
