@@ -1,12 +1,13 @@
 var express = require('express');
 var proxy = require('express-http-proxy');
+var timeout = require('connect-timeout');
 
 var app = express();
 
 app.get('/atest', function(req, res) {
     setTimeout(function() {
         res.send("test server");
-    }, 3 * 60 * 1000);
+    }, 140000);
 })
 
 function succeessNext(req, res, next) {
@@ -20,9 +21,14 @@ app.use(function(req, res, next) {
 });
 
 app.use('/test', succeessNext, proxy('localhost:3000', {
-    timeout: 60000
+    timeout: 150000,
+    proxyReqOptDecorator: function(proxyReqOpts, srcReq) {
+      return proxyReqOpts;
+    }
 }));
 
-app.listen(3000, function() {
+var server = app.listen(3000, function() {
     console.log('server start');
 })
+
+server.timeout = 180000;
