@@ -1,8 +1,8 @@
-var express = require('express');
-var proxy = require('express-http-proxy');
-var timeout = require('connect-timeout');
+const express = require('express');
+const proxy = require('express-http-proxy');
+const timeout = require('connect-timeout');
 
-var app = express();
+const app = express();
 
 app.get('/atest', function(req, res) {
     setTimeout(function() {
@@ -27,7 +27,9 @@ app.use('/test', succeessNext, proxy('localhost:3000', {
     }
 }));
 
-var server = app.listen(3000, function() {
+require('./read-write-file/read-write.server').listen(app);
+
+const server = app.listen(3000, function() {
     console.log('server start');
 })
 
