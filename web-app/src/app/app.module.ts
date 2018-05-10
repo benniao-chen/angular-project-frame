@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Http } from "@angular/http";
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { ShareModule } from "./modules/share/share.module";
+
+/* Interceptor */
+import { HttpHandleService } from "./interceptor/http-interceptor/http-handle.service";
+import { httpFactory } from "./interceptor/http-interceptor/http.factory";
+/* END */
 
 /* Translate */
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
@@ -15,6 +20,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     /* Translate */
     TranslateModule.forRoot({
         provide: TranslateLoader,
@@ -27,7 +33,14 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
   ],
-  providers: [],
+  providers: [
+    HttpHandleService,
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions, HttpHandleService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
