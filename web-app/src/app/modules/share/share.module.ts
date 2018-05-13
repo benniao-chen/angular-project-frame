@@ -3,6 +3,7 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Http, HttpModule } from "@angular/http";
+import { RouterModule } from "@angular/router";
 /* END */
 
 /* Directive */
@@ -28,6 +29,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        RouterModule,
         /* END */
         CurrencyMaskModule,
     ],
@@ -60,4 +62,12 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 export class ShareModule {
 
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: ShareModule,
+            providers: [
+
+            ],
+        }
+    }
 }

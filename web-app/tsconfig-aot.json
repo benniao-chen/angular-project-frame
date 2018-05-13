@@ -1,0 +1,48 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "removeComments": true,
+        "target": "es5",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "noImplicitAny": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "types": [
+            "node"
+        ],
+        "typeRoots": [
+            "./node_modules/@types/"
+        ]
+    },
+    "files": [
+        "./src/main.ts",
+        "./src/app/app.module.ts",
+        "./src/app/modules/share/share.module.ts",
+        "./src/app/modules/module-one/module-one.module.ts",
+        "./src/app/modules/module-two/module-two.module.ts"
+    ],
+    "exclude": [
+        "**/*.aot.ts",
+        "**/*.spec.ts",
+        "./node_modules",
+        "./aot",
+        "./conig",
+        "./dist",
+        "./docker",
+        "./e2e",
+        "./font",
+        "./server",
+        "./src/fonts"
+    ],
+    "angularCompilerOptions": {
+        "genDir": "aot",
+        "skipMetadataEmit": true
+    }
+}

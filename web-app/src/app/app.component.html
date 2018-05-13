@@ -7,3 +7,10 @@
 
 <input selfModelValue [(ngModel)]="test" (keyup) = "showValue(test)"/>
 <div>{{test}}</div>
+
+
+<button (click)="goToModule(1)">go to module-one</button>
+
+<button (click)="goToModule(2)">go to module-two</button>
+
+<router-outlet></router-outlet>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { ShareModule } from "./modules/share/share.module";
+import { routing } from './app.route';
 
 /* Interceptor */
 import { HttpHandleService } from "./interceptor/http-interceptor/http-handle.service";
@@ -28,7 +29,8 @@ import { AppComponent } from './app.component';
         deps: [Http]
     }),
     /* END */
-    ShareModule,
+    ShareModule.forRoot(),
+    routing,
   ],
   declarations: [
     AppComponent,
