@@ -4,6 +4,8 @@ const timeout = require('connect-timeout');
 
 const app = express();
 
+//https://github.com/expressjs/cors 跨域请求处理
+
 app.get('/atest', function(req, res) {
     setTimeout(function() {
         res.send("test server");
