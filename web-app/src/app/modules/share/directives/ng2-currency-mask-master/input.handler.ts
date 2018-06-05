@@ -1,4 +1,5 @@
 import { InputService } from "./input.service";
+import { Renderer2 } from "@angular/core";
 
 export class InputHandler {
 
@@ -6,8 +7,8 @@ export class InputHandler {
     private onModelChange: Function;
     private onModelTouched: Function;
 
-    constructor(htmlInputElement: HTMLInputElement, options: any) {
-        this.inputService = new InputService(htmlInputElement, options);
+    constructor(htmlInputElement: HTMLInputElement, options: any, renderer: Renderer2) {
+        this.inputService = new InputService(htmlInputElement, options, renderer);
     }
 
     handleCut(event: any): void {

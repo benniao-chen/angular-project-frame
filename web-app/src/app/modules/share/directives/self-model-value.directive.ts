@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, HostListener, ElementRef, OnInit, forwardRef, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 
 export const SELFNGMODEL_VALUE_ACCESSOR: any = {
@@ -21,6 +21,7 @@ export class SelfModelValueDirective implements OnInit, ControlValueAccessor {
 
     constructor(
         private elementRef: ElementRef, 
+        private _renderer: Renderer2
     ) {
 
     }
@@ -37,13 +38,12 @@ export class SelfModelValueDirective implements OnInit, ControlValueAccessor {
         let keyCode = event.which || event.charCode || event.keyCode;
         let keyChar = String.fromCharCode(keyCode);
         this.value = this.value + keyChar;
-        this.input.value = "abc";
         this.onModelChange(this.value);
     }
 
     writeValue(value: any) {
         console.log(value, "value");
-        this.input.value = value;
+        this._renderer.setAttribute(this.input, 'value', value);
     }
 
     registerOnChange(fn: any) {

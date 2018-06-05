@@ -12,5 +12,6 @@ export const routes: Routes = [
 
 export const routing = RouterModule.forRoot(routes, {
     initialNavigation: false,
-    preloadingStrategy: PreloadAllModules, //NoPreloading
+    preloadingStrategy: NoPreloading, //NoPreloading
+    // useHash: true,
 })

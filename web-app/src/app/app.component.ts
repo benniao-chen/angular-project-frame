@@ -23,9 +23,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/test/atest').subscribe(res => {
-      console.log(res);
-    })
+    // this.http.get('http://localhost:3000/test/atest').subscribe(res => {
+    //   console.log(res);
+    // })
   }
 
   showValue(value) {
