@@ -9,10 +9,17 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class ModuleOneTwoComponentComponent implements OnInit {
 
   @Input() testObj: any;
+  count: number = 0;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  countChange() {
+    setTimeout(() => {
+      this.count ++;
+    }, 0);
   }
 
 }

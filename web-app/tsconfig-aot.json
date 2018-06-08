@@ -26,7 +26,8 @@
         "./src/app/app.module.ts",
         "./src/app/modules/share/share.module.ts",
         "./src/app/modules/module-one/module-one.module.ts",
-        "./src/app/modules/module-two/module-two.module.ts"
+        "./src/app/modules/module-two/module-two.module.ts",
+        "./src/app/modules/index/index.module.ts"
     ],
     "exclude": [
         "**/*.aot.ts",
