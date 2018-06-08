@@ -8,9 +8,8 @@
   {{jounery}}
 </ng-template>
 
-<input #inputOne [(ngModel)]="inputOneModel" />
+<input #inputOne [(ngModel)]="inputOneModel" (keypress)="changeTesta(inputOneModel)"/>
 
 <input #inputTwo [(ngModel)]="inputTwoModel" />
 
-
-{{test}}
+<app-module-one-two-component [testObj] = "test"></app-module-one-two-component>

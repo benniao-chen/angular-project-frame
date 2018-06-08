@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule, NoPreloading, PreloadAllModules} from '@angular/router';
+import { Routes, RouterModule, NoPreloading, PreloadAllModules, PreloadingStrategy} from '@angular/router';
 import { AppComponent } from './app.component';
 
 
@@ -11,7 +11,7 @@ export const routes: Routes = [
 ];
 
 export const routing = RouterModule.forRoot(routes, {
-    initialNavigation: false,
+    // initialNavigation: false,
     preloadingStrategy: NoPreloading, //NoPreloading
     // useHash: true,
 })

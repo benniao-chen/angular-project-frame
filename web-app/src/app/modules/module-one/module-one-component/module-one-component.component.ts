@@ -4,7 +4,6 @@ import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef, ChangeDetec
   selector: 'app-module-one-component',
   templateUrl: './module-one-component.component.html',
   styleUrls: ['./module-one-component.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModuleOneComponentComponent implements OnInit {
   @ViewChild('inputOne') inputOne: ElementRef;
@@ -13,17 +12,25 @@ export class ModuleOneComponentComponent implements OnInit {
   jouneryy: string = "test";
   inputOneModel: string = "one";
   inputTwoModel: string = "two";
-  test: number = 0;
-
+  test: any = {
+    a: 1,
+    b: 2
+  }
 
   constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
     console.log(this.inputOne, this.inputTwo);
-    setInterval(() => {
-      this.test ++;
-      this.ref.markForCheck();
-    }, 1000);
+  }
+
+  changeTesta(value) {
+    //when module-one-two-component changeDetection: ChangeDetectionStrategy.OnPush
+    this.test = this.returnNewValue(value); //module-one-two-component will update auto
+    // this.test.a = value; //module-one-two-component will not update auto
+  }
+
+  returnNewValue(value) {
+    return {a: value, b: 'test'};
   }
 
 }
