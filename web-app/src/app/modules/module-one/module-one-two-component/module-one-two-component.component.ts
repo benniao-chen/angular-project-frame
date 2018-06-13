@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { GetBlobService } from '../../share/services/get-blob.service';
 
 @Component({
   selector: 'app-module-one-two-component',
@@ -11,7 +12,9 @@ export class ModuleOneTwoComponentComponent implements OnInit {
   @Input() testObj: any;
   count: number = 0;
 
-  constructor() { }
+  constructor(
+    public getBlob: GetBlobService,
+  ) { }
 
   ngOnInit() {
   }
@@ -20,6 +23,12 @@ export class ModuleOneTwoComponentComponent implements OnInit {
     setTimeout(() => {
       this.count ++;
     }, 0);
+  }
+
+  downLoadXLSX() {
+    this.getBlob.getBlobData().subscribe(res => {
+      this.getBlob.showFile(res, 'test', 'xlsx');
+    })
   }
 
 }

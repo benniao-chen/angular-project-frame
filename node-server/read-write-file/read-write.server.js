@@ -27,4 +27,11 @@ exports.listen = (app) => {
             }
         })
     })
+
+    app.get('/excel/:fileName', function(req, res) {
+
+        // Parse a buffer
+        const workSheetsFromBuffer = fs.readFileSync(`${__dirname}/${req.params.fileName}`);
+        res.send(workSheetsFromBuffer);
+    })
 }

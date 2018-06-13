@@ -3,6 +3,7 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Http, HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 /* END */
 
@@ -22,6 +23,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     thousands: ","
 };
 
+/* Services */
+import { GetBlobService } from './services/get-blob.service';
+
 @NgModule({
     imports: [
         /* Core */
@@ -29,6 +33,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        HttpClientModule,
         RouterModule,
         /* END */
         CurrencyMaskModule,
@@ -47,6 +52,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        HttpClientModule,
         /* END */
         CurrencyMaskModule,
         /* components */
@@ -56,7 +62,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
         /* pipe */
     ],
     providers: [
-        {provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig}
+        {provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig},
     ]
 })
 
@@ -66,7 +72,7 @@ export class ShareModule {
         return {
             ngModule: ShareModule,
             providers: [
-
+                GetBlobService
             ],
         }
     }
