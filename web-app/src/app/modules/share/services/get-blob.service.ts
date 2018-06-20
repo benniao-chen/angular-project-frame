@@ -33,7 +33,15 @@ export class GetBlobService {
     const data = window.URL.createObjectURL(blob);
 
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && fileExtension == 'xlsx') {
-      window.open(data);
+      const reader = new FileReader();
+      reader.readAsBinaryString(blob);
+      reader.onload = (e) => {
+        const type = 'application/msexcel';
+        const bdata = btoa(reader.result);
+        const dataUri = `data:${type};base64,${bdata}`;
+
+        window.open(dataUri, '_blank');
+      }
       return;
     }
 
