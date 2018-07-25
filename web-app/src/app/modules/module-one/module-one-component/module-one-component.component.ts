@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewContainerRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ViewContainerRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { GlobalService } from '../../share/services/global.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-module-one-component',
@@ -16,11 +18,31 @@ export class ModuleOneComponentComponent implements OnInit {
     a: 1,
     b: 2
   }
+  getOne: Subscription;
+  getTwo: Subscription;
+  getThree: Subscription;
 
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor(
+    private ref: ChangeDetectorRef,
+    public globalService: GlobalService,
+  ) { }
 
   ngOnInit() {
-    console.log(this.inputOne, this.inputTwo);
+    this.getOne = this.globalService.globalOne.subscribe(res => {
+      console.log("ModuleOne globalOne", res);
+    });
+    this.getTwo = this.globalService.globalTwo.subscribe(res => {
+      console.log("ModuleOne globalTwo", res);
+    });
+    this.getThree = this.globalService.globalThree.subscribe(res => {
+      console.log("ModuleOne globalThree", res);
+    });
+  }
+
+  ngOnDestroy() {
+    this.getOne && this.getOne.unsubscribe();
+    this.getTwo && this.getTwo.unsubscribe();
+    this.getThree && this.getThree.unsubscribe();
   }
 
   changeTesta(value) {

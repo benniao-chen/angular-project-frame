@@ -25,6 +25,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
 
 /* Services */
 import { GetBlobService } from './services/get-blob.service';
+import {GlobalService} from './services/global.service';
 
 @NgModule({
     imports: [
@@ -72,7 +73,8 @@ export class ShareModule {
         return {
             ngModule: ShareModule,
             providers: [
-                GetBlobService
+                GetBlobService,
+                GlobalService
             ],
         }
     }

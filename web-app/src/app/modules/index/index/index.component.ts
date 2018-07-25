@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService} from 'ng2-translate';
 import { Http } from '@angular/http';
 import { Router} from '@angular/router';
+import { GlobalService } from '../../share/services/global.service';
 
 @Component({
   selector: 'app-index',
@@ -19,9 +20,14 @@ export class IndexComponent implements OnInit {
     private translateService: TranslateService,
     private http: Http,
     private router: Router,
+    private globalService: GlobalService,
   ) { }
 
   ngOnInit() {
+  }
+
+  emitData() {
+    this.globalService.setGlobalValue(true);
   }
 
   showValue(value) {
